@@ -1,8 +1,22 @@
+<!DOCTYPE html>
 <html>
-    <head>
-
-    </head>
-    <body>
-        <p>Somethings</p>
-    </body>
+<head>
+    <title><%= title %></title>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <ul>
+        <% messages.forEach((message) => { %>
+            <li>
+                <strong><%= message.user %>:</strong> <%= message.text %> (added on <%= message.added.toLocaleString() %>)
+                <form action="/message/<%= message.id %>" method="get" style="display:inline;">
+                    <button type="submit">Open</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+    <form action="/new" method="get">
+        <button type="submit">Add a new message</button>
+    </form>
+</body>
 </html>
